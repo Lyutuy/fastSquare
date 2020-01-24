@@ -27,15 +27,24 @@ function handleBoxClick(event) {
 function renderBox() {
     $game.innerHTML = '';
     let box = document.createElement('div');
+    let boxSize = getRandom(10, 100);
+    let fieldGameSize = $game.getBoundingClientRect();
+    let maxTop = fieldGameSize.height - boxSize;
+    let maxLeft = fieldGameSize - boxSize;
 
-    box.style.height = box.style.width = '50px';
+    box.style.height = box.style.width = boxSize + 'px';
     box.style.position = 'absolute';
     box.style.backgroundColor = '#000';
-    box.style.top = '50px';
-    box.style.left = '70px';
+    box.style.top = getRandom(0, maxTop) + 'px';
+    box.style.left = getRandom(0, maxLeft) + 'px';;
     box.style.cursor = 'pointer';
     box.setAttribute('data-box', true);
 
     $game.insertAdjacentElement('afterbegin', box);
 
+}
+
+//Generate random square size and position
+function getRandom(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
 }
