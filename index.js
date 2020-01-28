@@ -6,6 +6,7 @@ let $resultHeader = document.querySelector('#result-header');
 let $result = document.querySelector('#result');
 let $gameTime = document.querySelector('#game-time');
 
+let colors = ['red', 'blue', 'yellow', 'pink', 'green'];
 let score = 0;
 let isGameStarted = false;
 
@@ -79,10 +80,11 @@ function renderBox() {
     let fieldGameSize = $game.getBoundingClientRect();
     let maxTop = fieldGameSize.height - boxSize;
     let maxLeft = fieldGameSize.width - boxSize;
+    let randomColorIndex = getRandom(0, colors.length);
 
     box.style.height = box.style.width = boxSize + 'px';
     box.style.position = 'absolute';
-    box.style.backgroundColor = '#000';
+    box.style.backgroundColor = colors[randomColorIndex];
     box.style.top = getRandom(0, maxTop) + 'px';
     box.style.left = getRandom(0, maxLeft) + 'px';;
     box.style.cursor = 'pointer';
